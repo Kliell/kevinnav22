@@ -2,7 +2,7 @@ import { ThemeProvider } from "@/hooks/useTheme";
 import { Stack } from "expo-router";
 
 // Convex import
-import { ConvexReactClient, ConvexProvider } from "convex/react";
+import { ConvexProvider, ConvexReactClient } from "convex/react";
 const convex = new ConvexReactClient(process.env.EXPO_PUBLIC_CONVEX_URL!, {
   unsavedChangesWarning: false
 })
