@@ -1,7 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet} from "react-native";
+import { createUserStyles } from "@/assets/styles/user";
+import useTheme from "@/hooks/useTheme";      
 
 export default function ProfileCard() {
+   const { toggleDarkMode, colors } = useTheme();    
+    const styles = createUserStyles(colors);
+  
   return (
     <View style={styles.container}>
       
