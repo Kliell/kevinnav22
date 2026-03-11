@@ -1,22 +1,22 @@
 import { createHomeStyles } from "@/assets/styles/home.styles";
 import Header from "@/components/header"
 import useTheme from "@/hooks/useTheme";
-import { Text, TouchableOpacity} from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { TouchableOpacity} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import AdicionarTodo from "@/components/AdicionarTodo";
 
 export default function Index() {
   const { toggleDarkMode, colors } = useTheme();                                                  
   const homeStyles = createHomeStyles(colors);
 
-  
-
-
-
   return (
+    <LinearGradient colors={colors.gradients.background} style={homeStyles.container}>
     <SafeAreaView style={homeStyles.safeArea} >
         <Header />
-        <Text >HOME</Text>
+        <AdicionarTodo />
         <TouchableOpacity onPress={toggleDarkMode}>MUDA TEMA</TouchableOpacity>
     </SafeAreaView>
+    </LinearGradient>
   )
 }

@@ -233,6 +233,10 @@ export const createHomeStyles = (colors: ColorScheme) => {
       lineHeight: 24,
       color: colors.textMuted,
     },
+    img: {
+      width: 100,
+      height: 100
+    }
   });
 
   return styles;
