@@ -11,9 +11,10 @@ import { LinearGradient } from "expo-linear-gradient";
 import {
   Alert,
   FlatList,
+  StatusBar,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -31,7 +32,7 @@ export default function Index() {
   const isLoading = todos === undefined;
   if (isLoading) return <LoadingSpinner />;
 
-  const handleToggleTodo = async (id: Id<"todo">) => {
+  const handleToggleTodo = async (id: Id<"todos">) => {
     try{
       await toggleTodo({ id })
     } catch (error) {
@@ -94,6 +95,7 @@ export default function Index() {
 
  return (
     <LinearGradient colors={colors.gradients.background} style={homeStyles.container}>
+      <StatusBar barStyle={colors.statusBarStyle} />
       <SafeAreaView style={homeStyles.safeArea}>
         <Header />
         <AdicionarTodo />
@@ -106,3 +108,5 @@ export default function Index() {
     </LinearGradient>
   )
 }
+
+

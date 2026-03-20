@@ -36,7 +36,7 @@ export const clearAllTodos = mutation({
 })
 //mudar status do todo 
 export const toggleTodo = mutation ({
-    args: {id: v.id("todo")},
+    args: {id: v.id("todos")},
     handler: async (ctx, args) => {
         const todo = await ctx.db.get(args.id);
 
