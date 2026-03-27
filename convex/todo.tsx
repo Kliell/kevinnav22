@@ -34,16 +34,40 @@ export const clearAllTodos = mutation({
         return { deletedCount: todos.length };
     },
 })
-//mudar status do todo 
-export const toggleTodo = mutation ({
-    args: {id: v.id("todos")},
-    handler: async (ctx, args) => {
-        const todo = await ctx.db.get(args.id);
 
-        if (!todo) throw new ConvexError("Todo não foi encontrado!")
+// mudar status do todo
+// mudar todos
+export const toggleTodo = mutation({
+  args: { id: v.id("todos") },
+  handler: async (ctx, args) => {
+    const todo = await ctx.db.get(args.id);
+    if (!todo) throw new ConvexError("Todo not found");
 
-        await ctx.db.patch(args.id, {
-            isCompleted : !todo.isCompleted, 
-        })     
+    await ctx.db.patch(args.id, {
+      isCompleted: !todo.isCompleted,
+    });
+  },
+});
+
+// atualizar o texto do todo
+export const updateTodo = mutation({
+    args : { 
+        id: v.id("todos"),
+        text : v.string() 
+    },
+    handler: async (ctx , args) => {
+        await ctx.db.patch(args.id , {
+            text: args.text,
+        })
+    }
+})
+
+// deletar 1 todo
+export const deleteTodo = mutation({
+    args : { 
+        id: v.id("todos")
+    },
+    handler: async (ctx , args) => {
+        await ctx.db.delete(args.id)
     }
 })
